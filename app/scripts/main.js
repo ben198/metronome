@@ -29,6 +29,7 @@
 			console.log('Please enter a number');
 		} else {
 			button.innerText = 'Stop';
+			beeper();
 			theInterval = setInterval(beeper, time);
 		}
 

@@ -4,19 +4,64 @@
 @import "neat/app/assets/stylesheets/_neat.scss";
 // endbower
 
+@import "plugins/base/_base.scss";
+
 body {
   background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
 
+div.console {
+  @include clearfix;
+}
+
+div.console > * {
+  float: left;
+}
+
 .hero-unit {
   margin: 50px auto 0 auto;
-  width: 300px;
+  width: 260px;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
   background-color: #eee;
   border-radius: 6px;
   padding: 60px;
+}
+
+input#beats {
+  width: em(40);
+  text-align: center;
+  font-size: em(50);
+  color: #4c4848;
+  padding: 0;
+}
+
+span#btn-left {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  &::before {
+    font-size: em(30);
+    position: absolute;
+    top: em(7);
+    left: em(-20);
+    content: '\276E';
+    color: #4c4848;
+  }
+}
+
+span#btn-right {
+  cursor: pointer;
+  position: relative;
+  &::before {
+    font-size: em(30);
+    position: absolute;
+    top: em(7);
+    left: em(74);
+    content: '\276F';
+    color: #4c4848;
+  }
 }
