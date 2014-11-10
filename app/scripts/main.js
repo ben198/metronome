@@ -2,8 +2,10 @@
 
 	'use strict';
 
-	var button = document.getElementById('button'),
-	    beats,
+	var button = document.getElementById('start'),
+		less = document.getElementById('btn-left'),
+		more = document.getElementById('btn-right'),
+	    field = document.getElementById('beats').value,
 	    theInterval,
 	    beep = new Audio('sounds/beep.wav');
 	
@@ -12,10 +14,10 @@
 			this.innerText = 'Start';
 			clearInterval(theInterval);
 		} else {
-		var field  = document.getElementById('beats');
-		beats = field.value;
-		field.value = '';
-		initialize(beats);
+		// field = document.getElementById('beats').value;
+		// beats = field.value;
+		// field.value = '';
+		initialize(field);
 		}
 	};
 
@@ -33,6 +35,18 @@
 			theInterval = setInterval(beeper, time);
 		}
 
+	};
+
+	less.onclick = function() {
+		var value = parseFloat(field) - 1;
+		field = value.toString();
+		document.getElementById('beats').value = field;
+	};
+
+	more.onclick = function() {
+		var value = parseFloat(field) + 1;
+		field = value.toString();
+		document.getElementById('beats').value = field;
 	};
 
 
