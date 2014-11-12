@@ -75,12 +75,17 @@ span#btn-right {
   }
 }
 
-div#accentBtns {
+div#keypadBtns {
   @include outer-container;
 }
 
-.accentBtn {
+.keypadBtn {
   margin-bottom: 2.35765%;
   @include span-columns(4);
   @include omega(3n);
+}
+
+button#clearBtn {
+  @include span-columns(8);
+  @include omega();
 }
