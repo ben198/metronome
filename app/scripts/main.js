@@ -7,7 +7,9 @@
 		more   = document.getElementById('btn-right'),
 		clear  = document.getElementById('clearBtn'),
 	    field  = document.getElementById('beats'),
+	    box    = [],
 	    theInterval,
+	    strike,
 	    beep = new Audio('sounds/beep.wav');
 
 	var theSwitch = function theSwitch() {
@@ -42,9 +44,15 @@
 		if (field.value === '') {
 			field.value = '31';
 		}
-		if (field.value > 30) {
-			var value = parseFloat(field.value) - 1;
-			field.value = value.toString();
+		if (field.value > 1) {
+			var value = parseFloat(field.value) - 1,
+			    holder = value.toString();
+			field.value = holder;
+			holder = holder.split('');
+			box.splice(0, 3);
+			for (var i = 0; i < holder.length; i += 1) {
+				box.push(holder[i]);
+			}
 		}
 	};
 
@@ -52,16 +60,16 @@
 		if (field.value === '') {
 			field.value = '29';
 		}
-		if (field.value < 230) {
-			var value = parseFloat(field.value) + 1;
-			field.value = value.toString();
-		}
-	};
-
-	clear.onclick = function() {
-		// field.value = '';
-		// theSwitch();
-		console.log(typeof(field.value));
+		// if (field.value < 230) {
+			var value = parseFloat(field.value) + 1,
+			    holder = value.toString();
+			field.value = holder;
+			holder = holder.split('');
+			box.splice(0, 3);
+			for (var i = 0; i < holder.length; i += 1) {
+				box.push(holder[i]);
+			}
+		// }
 	};
 
 	function numberGenerator(number, storage) {
@@ -73,45 +81,25 @@
 		return storage;
 	};
 
-	// function totalArray(array) {
-	// 	var i, total = 0;
-	// 	for (i = 0; i < array.length; i += 1) {
-	// 		total += array[i];
-	// 	}
-	// 	return total;
-	// };
-
 	var keypadHandler = function keypadHandler() {
 		var i,
-			box    = [],
 		    keypad = document.getElementsByClassName('keypadBtn');
 		for (i = 0; i < keypad.length; i += 1) {
 	    	keypad[i].onclick = function() {
 	    		var value  = parseFloat(field.value) + 1,
-	    		    num    = this.innerText,
-	    		    strike = numberGenerator(num, box),
-	    		    stroke = strike.map(Number),
+	    		    num    = this.innerText;
+	    		    strike = numberGenerator(num, box);
+	    		var stroke = strike.map(Number),
 	    		    strack = stroke.join('');
-	    		    // tot    = totalArray(stroke);
-	    		if (strack < 231) {
 	    			smash(strike);
-	    		}
-	    		console.log(strack);
-	    		// box.push(this.innerText);
-	    		// smash(box);
 	    	}
 	    };
-	    // return function flipper() {
-	    // 	return box;
-	    // }
 	}();
 	
 
 	var smash = function smash(container) {
 		var f = container.join('');
-		// if (f < 231) {
 			field.value = f;
-		// }
 	};
 
 
