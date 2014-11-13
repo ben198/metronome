@@ -8,3 +8,49 @@ input[type="submit"] {
   vertical-align: middle;
   white-space: nowrap;
 }
+
+span#btn-left {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  &::before {
+    font-size: em(30);
+    position: absolute;
+    top: em(7);
+    left: em(-20);
+    content: '\276E';
+    color: #4c4848;
+  }
+}
+
+span#btn-right {
+  cursor: pointer;
+  position: relative;
+  &::before {
+    font-size: em(30);
+    position: absolute;
+    top: em(16);
+    left: em(74);
+    content: '\276F';
+    color: #4c4848;
+  }
+}
+
+button#start {
+  background-color: #449D44;
+}
+
+div#keypadBtns {
+  @include outer-container;
+}
+
+.keypadBtn {
+  margin-bottom: 2.35765%;
+  @include span-columns(4);
+  @include omega(3n);
+}
+
+button#clearBtn {
+  @include span-columns(8);
+  @include omega();
+}
